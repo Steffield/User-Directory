@@ -4,7 +4,8 @@
 }
 
 img{
-  box-shadow: 2px 2px 2px 2px black
+  box-shadow: 2px 2px 2px 2px black;
+  border-radius: 50px
 }
 
 tr:hover{
@@ -16,3 +17,4 @@ tr:hover{
 img:hover{
   box-shadow: 2px 2px 10px 2px #94778B
 }
+

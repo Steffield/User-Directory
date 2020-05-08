@@ -2,7 +2,8 @@ import axios from "axios";
 
 const BASEURL = "https://randomuser.me/api/?results=";
 const wantedResultNumber = "25" ;
-const defaultQuery= "&seed=abcde&inc=picture,name,email,phone,nat,id&nat=";
+const defaultQuery= "&seed=2e6577716ac2851f&inc=picture,name,email,phone,nat,id&nat=";
+// &seed=abcde
 // const sameEmployees = "&seed=2e6577716ac2851f"
 // const natQuery = {this.state.natQuery}
 // const gender = () =>{

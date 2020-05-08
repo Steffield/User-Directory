@@ -6,9 +6,13 @@ import API from "../../utils/API";
 
 class SearchResultContainer extends React.Component {
   state = {
+    search: "",
+    genderSearch: "",
     natSearch: "",
     persons: []
   };
+
+  
 
   // When this component mounts, search the randomuser API for employees
   componentDidMount() {
@@ -35,7 +39,9 @@ class SearchResultContainer extends React.Component {
   // When the form is submitted, search the Employees API for `this.state.search`
   handleFormSubmit = event => {
     event.preventDefault();
+    this.searchEmployees(this.state.search);
     this.searchEmployees(this.state.natSearch);
+    this.searchEmployees(this.state.genderSearch);
   };
 
   render() {

@@ -1,95 +1,88 @@
 import React from "react";
 import "./table.css";
 
-// const sortTypes = {
-// 	up: {
-// 		class: 'sort-up',
-// 		fn: (a, b) => a.person.name.last - b.person.name.last
-// 	},
-// 	down: {
-// 		class: 'sort-down',
-// 		fn: (a, b) => b.person.name.last - a.person.name.last
-// 	},
-// 	default: {
-// 		class: 'sort',
-// 		fn: (a, b) => a
-// 	}
-// };
-// sort = ()=>{
-// }
 
-function Table(props){
+const sortTypes = {
+  up: {
+    className: 'sort-up',
+    fn: (a, b) => a.name.last > b.name.last ? 1: -1
+  },
+  down: {
+    className: 'sort-down',
+    fn: (a, b) => a.name.last < b.name.last ? 1: -1
+  },
+  default: {
+    className: 'sort',
+    fn: (a, b) => a
+  }
+};
+class Table extends React.Component {
+  state ={
+    currentSort: 'default'
+  }; 
+
+  // table sort credit to https://www.florin-pop.com/blog/2019/07/sort-table-data-with-react/
+onSortChange = () => {
+  const { currentSort } = this.state;
+  let nextSort;
+
+  if ( currentSort === "down" ) nextSort = "up";
+  else if (currentSort === 'up') nextSort = 'default';
+  else if (currentSort === 'default') nextSort = 'down';
+
+  this.setState({
+    currentSort: nextSort
+  });
+};
+
+
+
+render() {
+  
+
+  const { persons } = this.props;
+  const { currentSort } = this.state;
+
   return (
-    <div className="container-fluid">
+    persons.length > 0 && (
+      <div className="container-fluid">
+         <table className="table table-striped table-hover text-left">
+          <thead>
+            <tr>
+              <th scope="col">Picture</th>
+              <th scope="col">First Name</th>
+              <th scope="col"> Last Name
+                <button className="btn btn-default ml-2" onClick={this.onSortChange}>
+                  <i className={`fa fa-${sortTypes[currentSort].className}`} />
+                </button>
+                </th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Office Location</th>
+            
+            </tr>
+          </thead>
 
-         <table className="table table-striped table-hover">
-       <thead>
-         <tr>
-         {/* onClick={this.sort} */}
-           <th scope="col">Image</th>
-           <th scope="col" >Name</th>
-           <th scope="col">Email</th>
-           <th scope="col">Phone</th>
-           <th scope="col">Nationality</th>
-         </tr>
-       </thead>
-
-       <tbody>
+          <tbody>
          
-           { props.persons.map((person, i) =>
+           { [...persons].sort(sortTypes[currentSort].fn).map((person, i) =>
            (
               <tr key={person.email}>
                 <td id={`IMG-${i}`}><img alt={i} src={person.picture.medium}></img></td>
-                <td >{person.name.first} {person.name.last}</td>
+                <td>{person.name.first}</td>
+                <td>{person.name.last}</td>
                 <td>{person.email}</td>
                 <td>{person.phone}</td>
-                <td>{person.nat}</td>
+                <td>{person.nat} Office</td>
               </tr> 
            ))
           }         
-       </tbody>
-     </table>
-
-   </div>
-  )
-  }
-
-// render(){
-//   return(
-
-//     <div className="container-fluid">
-
-//          <table className="table table-striped table-hover">
-//        <thead>
-//          <tr>
-//            <th scope="col">Image</th>
-//            <th scope="col" onClick={this.sort}>Name</th>
-//            <th scope="col">Email</th>
-//            <th scope="col">Phone</th>
-//            <th scope="col">Nationality</th>
-//          </tr>
-//        </thead>
-
-//        <tbody>
-         
-//            { 
-//            props.persons.map((person, i) =>
-//            (
-//               <tr key={person.id.value}>
-//                 <td id={`IMG-${i}`}><img alt={i} src={person.picture.medium}></img></td>
-//                 <td >{person.name.first} {person.name.last}</td>
-//                 <td>{person.email}</td>
-//                 <td>{person.phone}</td>
-//                 <td>{person.nat}</td>
-//               </tr> 
-//            ))
-//           }         
-//        </tbody>
-//      </table>
-
-//    </div>
-//   )
-//   }
-// }
+          </tbody>
+        </table>
+        </div>
+     ));
+    }
+}
 
 export default Table;
+   

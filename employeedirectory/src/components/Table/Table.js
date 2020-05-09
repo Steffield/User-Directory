@@ -1,27 +1,30 @@
 import React from "react";
 import "./table.css";
 
-
+//====== sort by last name and change fontawesome button accordingly======
 const sortTypes = {
   up: {
     className: 'sort-up',
-    fn: (a, b) => a.name.last > b.name.last ? 1: -1
+    sortFct: (a, b) => a.name.last > b.name.last ? 1: -1
   },
   down: {
     className: 'sort-down',
-    fn: (a, b) => a.name.last < b.name.last ? 1: -1
+    sortFct: (a, b) => a.name.last < b.name.last ? 1: -1
   },
   default: {
     className: 'sort',
-    fn: (a, b) => a
+    sortFct: (a, b) => a
   }
 };
+
+//========Table with Data from randomuseapi.me=============
 class Table extends React.Component {
   state ={
-    currentSort: 'default'
+    currentSort: 'default',
+  
   }; 
 
-  // table sort credit to https://www.florin-pop.com/blog/2019/07/sort-table-data-with-react/
+//function to sort the table by last name
 onSortChange = () => {
   const { currentSort } = this.state;
   let nextSort;
@@ -35,16 +38,13 @@ onSortChange = () => {
   });
 };
 
-
-
 render() {
-  
 
   const { persons } = this.props;
   const { currentSort } = this.state;
 
   return (
-    persons.length > 0 && (
+    persons.length ? (
       <div className="container-fluid">
          <table className="table table-striped table-hover text-left">
           <thead>
@@ -65,7 +65,7 @@ render() {
 
           <tbody>
          
-           { [...persons].sort(sortTypes[currentSort].fn).map((person, i) =>
+           { [...persons].sort(sortTypes[currentSort].sortFct).map((person, i) =>
            (
               <tr key={person.email}>
                 <td id={`IMG-${i}`}><img alt={i} src={person.picture.medium}></img></td>
@@ -80,7 +80,7 @@ render() {
           </tbody>
         </table>
         </div>
-     ));
+     ) : <div className="alert">{`No person found.`}</div>);
     }
 }
 

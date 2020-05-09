@@ -7,7 +7,7 @@ function Jumbotron({natSearch, search, handleFormSubmit, handleInputChange, hand
       <div className="container text-center" >
         <h1 className="display-4">Employee Directory</h1>
        
-        <p className="lead">If you prefer to contact an employee of the same gender or works in the same country, filter the result by gender or office location. Click on the caret in the name column to sort the results by the employee's last name.</p>
+        <p className="lead">Employees can be sorted by last name, the search box can be used to search for a certain name and employees can be filtered by office location. </p>
       </div>
       <hr></hr>
       <SearchForm 

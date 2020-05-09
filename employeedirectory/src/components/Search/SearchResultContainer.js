@@ -57,7 +57,7 @@ class SearchResultContainer extends React.Component {
   render() {
     const cleanSearchVal = this.state.search.trim().toLowerCase();
     const filteredPeople = cleanSearchVal ? this.state.persons.filter(p => {
-      const userData = `${p.name.first}${p.name.last}${p.name.email}${p.name.phone}${p.name.nat}`.toLowerCase();
+      const userData = `${p.name.first}${p.name.last}}`.toLowerCase();
       return userData.includes(cleanSearchVal);
     }) : this.state.persons;
   

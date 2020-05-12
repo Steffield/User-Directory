@@ -12,8 +12,9 @@ class SearchResultContainer extends React.Component {
       search: "",
       natSearch: "us,nz,gb,de",
       persons: [],
-      filteredByLastName: [],
+      filteredPeople: []
     };
+
 
   }
 

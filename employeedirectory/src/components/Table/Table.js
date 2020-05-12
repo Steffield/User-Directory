@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import "./table.css";
 
 //====== sort by last name and change fontawesome button accordingly======
@@ -18,7 +18,7 @@ const sortTypes = {
 };
 
 //========Table with Data from randomuseapi.me=============
-class Table extends React.Component {
+class Table extends Component {
   state ={
     currentSort: 'default',
   
@@ -80,7 +80,7 @@ render() {
           </tbody>
         </table>
         </div>
-     ) : <div className="alert">{`No person found.`}</div>);
+     ) : <div className="alert text-center mr-5 ml-5">No employee found with this name.</div>);
     }
 }
 

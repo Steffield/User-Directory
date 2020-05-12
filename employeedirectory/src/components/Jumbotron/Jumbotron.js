@@ -1,7 +1,8 @@
 import React from "react";
 import "./Jumbotron.css";
 
-function Jumbotron({natSearch, search, handleFormSubmit, handleInputChange, handleFormClear}) {
+//props I will use:  {natSearch, search, handleFormSubmit, handleInputChange, handleFormClear}
+function Jumbotron(props) {
   return (
     <div className="jumbotron" style={{backgroundColor: "#94778B", color: "white"}}>
       <div className="container text-center" >
@@ -11,19 +12,19 @@ function Jumbotron({natSearch, search, handleFormSubmit, handleInputChange, hand
       </div>
       <hr></hr>
       <SearchForm 
-        natSearch={natSearch} 
-        search={search}
-        handleFormSubmit={handleFormSubmit}
-        handleInputChange={handleInputChange}
-        handleFormClear={handleFormClear}
+        natSearch={props.natSearch} 
+        search={props.search}
+        handleFormSubmit={props.handleFormSubmit}
+        handleInputChange={props.handleInputChange}
+        handleFormClear={props.handleFormClear}
         />
        
     </div>
-
   );
 }
 
-function SearchForm ({search, handleInputChange, natSearch, handleFormSubmit, handleFormClear}) {
+// props I will use: {search, handleInputChange, natSearch, handleFormSubmit, handleFormClear}
+function SearchForm (props) {
   return (
 
     <div className="container">
@@ -35,8 +36,8 @@ function SearchForm ({search, handleInputChange, natSearch, handleFormSubmit, ha
           {/* employee by last name  */}
           <label htmlFor="search" className="mr-2">Search Employee</label>
           <input 
-            value={search}
-            onChange={handleInputChange}
+            value={props.search}
+            onChange={props.handleInputChange}
             className="form-control mr-5 align-items-center" 
             type="text"  
             aria-label="Search" 
@@ -50,7 +51,7 @@ function SearchForm ({search, handleInputChange, natSearch, handleFormSubmit, ha
 
           {/* filter by nationality */}
           <label htmlFor="natSearch" className="mr-2">Office Location</label>
-          <select name="natSearch" value={natSearch} onChange={handleInputChange} className="form-control mr-5">
+          <select name="natSearch" value={props.natSearch} onChange={props.handleInputChange} className="form-control mr-5">
             <option defaultValue ="us,gb,nz,de">All Offices</option>
             <option value ="us">USA</option>
             <option value ="de">Germany</option> 
@@ -60,13 +61,13 @@ function SearchForm ({search, handleInputChange, natSearch, handleFormSubmit, ha
         
           {/* Submit and Clear Button */}
           <button className="btn my-2 my-sm-0 mr-2" type="submit" name="submit" style={{color:"#565656", backgroundColor:"#f0ebee", boxShadow:"inset 0 0 5px gray"}}
-            onClick={handleFormSubmit}
+            onClick={props.handleFormSubmit}
             >
             <i className= "fa fa-search"></i>
           </button>
 
           <button className="btn my-2 my-sm-0" type="reset" name="clear" style={{color:"#f0ebee", backgroundColor:"#565656", boxShadow:"inset 0 0 5px gray"}}
-          onClick={handleFormClear}>
+          onClick={props.handleFormClear}>
             <i className= "fa fa-undo"></i>
           </button>  
         </div>

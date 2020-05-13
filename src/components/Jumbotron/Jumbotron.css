@@ -1,0 +1,9 @@
+@media (min-width: 576px){
+  .jumbotron {
+      padding:2rem 1rem;
+  }
+  }
+
+.jumbotron{
+  border-bottom: 3px solid #565656;
+}

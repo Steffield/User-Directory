@@ -1,0 +1,27 @@
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f0ebee;
+  /* #ede6f9; */
+}
+
+img{
+  /* box-shadow: 2px 2px 2px 2px rgb(70, 49, 49); */
+  box-shadow: 2px 2px 10px 2px #94778B;
+
+  border-radius: 50px
+}
+
+tr:hover{
+  /* font-weight: bold; */
+  background-Color: #d9cfd6!important;
+}
+
+/* img:hover{
+  box-shadow: 2px 2px 10px 2px #94778B
+} */
+
+.alert{
+  background-color: #d9cfd6!important;
+  font-size: 20px
+}
+
+

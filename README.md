@@ -42,7 +42,7 @@ Git pull or clone and run the following command to start:
 
 ## Deployed Link:
 
-The deployed link to Github Pages: <a href="#">React-Employee-Directory</a>.
+The deployed link to Github Pages: <a href="https://steffield.github.io/User-Directory/">React-Employee-Directory</a>.
 
 ![](Emp-Dir.gif)
 
